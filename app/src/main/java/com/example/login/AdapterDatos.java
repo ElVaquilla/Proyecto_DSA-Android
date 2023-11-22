@@ -14,14 +14,21 @@ import java.util.ArrayList;
 public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDatos>{
     private ArrayList<ProductoVo> listaProductos;
     private Context context;
+
     public AdapterDatos(ArrayList<ProductoVo> listaProductos, Context context){
         this.listaProductos=listaProductos;
         this.context = context;
+        //listaProductos=new ArrayList<>();
     }
+    /*public void setListaProductos(ArrayList<ProductoVo> listaProducts)
+    {
+        listaProductos = listaProducts;
+        notifyDataSetChanged();
+    }*/
     @NonNull
     @Override
     public ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_productos, null,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_productos, parent,false);
         return new ViewHolderDatos(view);
     }
 
@@ -57,3 +64,5 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
 
     }
 }
+
+
