@@ -1,6 +1,6 @@
 package com.example.login;
 
-import java.util.List;
+import com.example.login.ModelosDeClases.Credenciales;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -11,5 +11,5 @@ public interface LoginService {
 
     @Headers("Content-Type:application/json")
     @POST("dsaApp/jugadores/login")
-    Call<Credenciales> Createcredenciales(@Body Credenciales credenciales);
+    Call<String> Createcredenciales(@Body Credenciales credenciales);
 }

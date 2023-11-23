@@ -1,4 +1,4 @@
-package com.example.login;
+package com.example.login.ModelosDeClases;
 
 public class ProductoVo {
     //private int foto;

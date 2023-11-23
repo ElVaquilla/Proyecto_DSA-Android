@@ -9,6 +9,8 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.login.ModelosDeClases.Credenciales;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -50,11 +52,11 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         LoginService login = retrofit.create(LoginService.class);
-        Call<Credenciales> call = login.Createcredenciales(c);
-        call.enqueue(new Callback<Credenciales>() {
+        Call<String> call = login.Createcredenciales(c);
+        call.enqueue(new Callback<String>() {
 
             @Override
-            public void onResponse(Call<Credenciales> call, Response<Credenciales> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
                 }
@@ -63,58 +65,10 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Credenciales> call, Throwable t) {
+            public void onFailure(Call<String> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Error No response", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
-
-
-       /*
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    // Recogemos los datos introducidos por el usuario
-                    Log.i("OnClick", "Entra en el login");
-                    EditText editText = (EditText) findViewById(R.id.username);
-                    String usrname = editText.getText().toString();
-                    EditText editText2 = (EditText) findViewById(R.id.password);
-                    String pswd = editText2.getText().toString();
-                    Credenciales c = new Credenciales(usrname, pswd);
-
-                    HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-                    interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-                    OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
-
-
-                    Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl("http://10.0.2.2/dsaApp/")
-                            .client(client)
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
-
-                    LoginService login = retrofit.create(LoginService.class);
-                    Call<List<Credenciales>> call = login.Createcredenciales(c);
-                    String respuesta = null;
-                    try {
-                        respuesta = call.execute().body().toString();
-                        if (respuesta.equals("Succesful"))
-                            window.setStatusBarColor(Color.parseColor("#00701a"));
-                        else
-                            window.setStatusBarColor(Color.parseColor("#00702b"));
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        thread.start();
-    }
-
-    */
 }
