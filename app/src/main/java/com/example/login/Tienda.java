@@ -85,6 +85,23 @@ public class Tienda extends AppCompatActivity {
                     AdapterDatos adapter=new AdapterDatos(listProductos,Tienda.this);
 
                     recyclerProd.setAdapter(adapter);
+                    adapter.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            Bundle miBundle=new Bundle();
+                            miBundle.putString("id",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getId());
+                            miBundle.putInt("precio",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getPrecio());
+                            miBundle.putString("nombre",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getNombre());
+                            miBundle.putInt("efect",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getEfect());
+                            miBundle.putString("descrip",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getDescrip());
+                            miBundle.putInt("efectType",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getEfectType());
+                            Intent miIntentq = new Intent(Tienda.this, ProductoTienda.class);
+                            miIntentq.putExtras(miBundle);
+
+                            startActivity(miIntentq);
+                        }
+                    });
 
                 }
             }
