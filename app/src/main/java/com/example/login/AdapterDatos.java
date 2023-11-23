@@ -13,9 +13,10 @@ import com.example.login.ModelosDeClases.ProductoVo;
 
 import java.util.ArrayList;
 
-public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDatos>{
+public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDatos> implements View.OnClickListener {
     private ArrayList<ProductoVo> listaProductos;
     private Context context;
+    private View.OnClickListener listener;
 
     public AdapterDatos(ArrayList<ProductoVo> listaProductos, Context context){
         this.listaProductos=listaProductos;
@@ -31,6 +32,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
     @Override
     public ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_productos, parent,false);
+        view.setOnClickListener(this);
         return new ViewHolderDatos(view);
     }
 
@@ -48,6 +50,16 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
     @Override
     public int getItemCount() {
         return listaProductos.size();
+    }
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(listener!=null){
+            listener.onClick(view);
+        }
     }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
