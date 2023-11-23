@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 
 public interface TiendaService {
 
-    @GET("tienda/todos")
+    @GET("dsaApp/tienda/todos")
     Call<ArrayList<ProductoVo>>getTiendaProductos();
 
 }
