@@ -7,6 +7,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface LoginService {
-    @POST("/jugadores/login/")
+    @POST("dsaApp/jugadores/login")
     Call<List<Credenciales>> Createcredenciales(@Body Credenciales credenciales);
 }

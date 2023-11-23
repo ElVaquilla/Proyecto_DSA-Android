@@ -8,6 +8,6 @@ import retrofit2.http.POST;
 
 public interface RegisterService {
 
-    @POST("/jugadores/register/")
+    @POST("dsaApp/jugadores/register/")
     Call<List<CredencialesRegistro>> CreateCredencialesRegistro(@Body CredencialesRegistro credenciales);
 }
