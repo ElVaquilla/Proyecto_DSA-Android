@@ -39,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
         String usrname = editText.getText().toString();
         EditText editText2 = (EditText) findViewById(R.id.password);
         String pswd = editText2.getText().toString();
-        EditText editText3 = (EditText) findViewById(R.id.mail);
+        EditText editText3 = (EditText) findViewById(R.id.email);
         String mail = editText3.getText().toString();
         CredencialesRegistro c = new CredencialesRegistro(usrname, pswd,mail);
 
