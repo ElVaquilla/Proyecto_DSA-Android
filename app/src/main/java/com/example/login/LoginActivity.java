@@ -2,17 +2,12 @@ package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.EditText;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.Toast;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -55,20 +50,21 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         LoginService login = retrofit.create(LoginService.class);
-        Call<List<Credenciales>> call = login.Createcredenciales(c);
-        call.enqueue(new Callback<List<Credenciales>>() {
+        Call<Credenciales> call = login.Createcredenciales(c);
+        call.enqueue(new Callback<Credenciales>() {
+
             @Override
-            public void onResponse(Call<List<Credenciales>> call, Response<List<Credenciales>> response) {
+            public void onResponse(Call<Credenciales> call, Response<Credenciales> response) {
                 if (response.isSuccessful()) {
-                    window.setStatusBarColor(Color.parseColor("#00701a"));
-                } else {
-                    window.setStatusBarColor(Color.parseColor("#00702b"));
+                    Toast.makeText(LoginActivity.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
                 }
+                else
+                    Toast.makeText(LoginActivity.this, "Error, response is not as expected", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<List<Credenciales>> call, Throwable t) {
-                throw new RuntimeException(t);
+            public void onFailure(Call<Credenciales> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Error No response", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
@@ -40,7 +41,8 @@ public class RegisterActivity extends AppCompatActivity {
         String pswd = editText2.getText().toString();
         EditText editText3 = (EditText) findViewById(R.id.mail);
         String mail = editText3.getText().toString();
-        CredencialesRegistro c = new CredencialesRegistro(usrname, pswd, mail);
+        Credenciales c = new Credenciales(usrname, mail);
+        c.setEmail(mail);
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -54,21 +56,22 @@ public class RegisterActivity extends AppCompatActivity {
                 .build();
 
         RegisterService register = retrofit.create(RegisterService.class);
-        Call<List<CredencialesRegistro>> call = register.CreateCredencialesRegistro(c);
-        call.enqueue(new Callback<List<CredencialesRegistro>>() {
+        Call<List<Credenciales>> call = register.CreateCredencialesRegistro(c);
+        call.enqueue(new Callback<List<Credenciales>>() {
+
 
             @Override
-            public void onResponse(Call<List<CredencialesRegistro>> call, Response<List<CredencialesRegistro>> response) {
+            public void onResponse(Call<List<Credenciales>> call, Response<List<Credenciales>> response) {
                 if (response.isSuccessful()) {
-                    window.setStatusBarColor(Color.parseColor("#00701a"));
-                } else {
-                    window.setStatusBarColor(Color.parseColor("#00702b"));
+                    Toast.makeText(RegisterActivity.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
                 }
+                else
+                    Toast.makeText(RegisterActivity.this,"Error, response is not as expected", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<List<CredencialesRegistro>> call, Throwable t) {
-                throw new RuntimeException(t);
+            public void onFailure(Call<List<Credenciales>> call, Throwable t) {
+                Toast.makeText(RegisterActivity.this, "Error no response", Toast.LENGTH_SHORT).show();
             }
         });
     }
