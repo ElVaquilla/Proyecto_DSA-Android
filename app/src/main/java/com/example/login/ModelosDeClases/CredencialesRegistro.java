@@ -12,8 +12,8 @@ public class CredencialesRegistro {
     }
     public String getUsername(){return this.username;}
     public String getPassword(){return this.password;}
-    public String getMail(){return this.email;}
+    public String getEmail(){return this.email;}
     public void setUsername(String username){this.username = username;}
     public void setPassword(String password){this.password = password;}
-    public void setMail(String mail){this.email = mail;}
+    public void setEmail(String mail){this.email = mail;}
 }

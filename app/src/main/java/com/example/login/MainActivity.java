@@ -23,4 +23,9 @@ public class MainActivity extends AppCompatActivity{
     public void regonClick(View v){
         startActivity(new Intent(MainActivity.this, RegisterActivity.class));
     }
+
+    /*public void tiendaonClick(View v){
+        Intent miii = new Intent(MainActivity.this, Tienda.class);
+        startActivity(miii);
+    }*/
 }
