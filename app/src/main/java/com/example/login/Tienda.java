@@ -104,7 +104,6 @@ public class Tienda extends AppCompatActivity {
                             startActivity(miIntentq);
                         }
                     });
-
                 }
             }
 

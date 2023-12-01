@@ -2,6 +2,7 @@ package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -60,13 +61,17 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
                 }
-                else
+                else {
                     Toast.makeText(LoginActivity.this, "Error, response is not as expected", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Error No response", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this, Tienda.class));
             }
         });
 
