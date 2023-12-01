@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.login.ModelosDeClases.Credenciales;
@@ -25,6 +28,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegisterActivity extends AppCompatActivity {
 
     private Window window;
+    private ProgressBar spinner;
+    private Button registerButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +39,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void registeronClick(View v) {
+
+
         // Recogemos los datos introducidos por el usuario
         Log.i("OnClick", "Entra en el login");
         EditText editText = (EditText) findViewById(R.id.username);
@@ -41,34 +49,67 @@ public class RegisterActivity extends AppCompatActivity {
         String pswd = editText2.getText().toString();
         EditText editText3 = (EditText) findViewById(R.id.email);
         String mail = editText3.getText().toString();
-        CredencialesRegistro c = new CredencialesRegistro(usrname, pswd,mail);
+        EditText editText4=(EditText)findViewById(R.id.confirmPassword);
+        String confirmPswd=editText4.getText().toString();
 
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        registerButton=(Button)findViewById(R.id.reg);
+        spinner=(ProgressBar)findViewById(R.id.progressBar);
+
+        if(pswd.equals(confirmPswd)){
+            CredencialesRegistro c = new CredencialesRegistro(usrname, pswd,mail);
+
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://10.0.2.2:8080/")
+                    .client(client)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
-        RegisterService register = retrofit.create(RegisterService.class);
-        Call<List<CredencialesRegistro>> call = register.CreateCredencialesRegistro(c);
-        call.enqueue(new Callback<List<CredencialesRegistro>>() {
-            @Override
-            public void onResponse(Call<List<CredencialesRegistro>> call, Response<List<CredencialesRegistro>> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(RegisterActivity.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
+            RegisterService register = retrofit.create(RegisterService.class);
+
+            Call<List<CredencialesRegistro>> call = register.CreateCredencialesRegistro(c);
+            spinner.setVisibility(View.VISIBLE);
+            call.enqueue(new Callback<List<CredencialesRegistro>>() {
+                @Override
+                public void onResponse(Call<List<CredencialesRegistro>> call, Response<List<CredencialesRegistro>> response) {
+                    if (response.isSuccessful()) {
+                        spinner.setVisibility(View.GONE);
+                        Toast.makeText(RegisterActivity.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        Toast.makeText(RegisterActivity.this,"Error, response is not as expected", Toast.LENGTH_SHORT).show();
                 }
-                else
-                    Toast.makeText(RegisterActivity.this,"Error, response is not as expected", Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onFailure(Call<List<CredencialesRegistro>> call, Throwable t) {
-                Toast.makeText(RegisterActivity.this, "Error no response", Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<List<CredencialesRegistro>> call, Throwable t) {
+                    Toast.makeText(RegisterActivity.this, "Error no response", Toast.LENGTH_SHORT).show();
+                    spinner.setVisibility(View.GONE);
+                }
+            });
+            registerButton.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    spinner.setVisibility(View.VISIBLE);
+                }
+            }));
+        }else{
+            editText.setText("");
+            editText2.setText("");
+            editText3.setText("");
+            editText4.setText("");
+            registerButton.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    spinner.setVisibility(View.VISIBLE);
+                }
+            }));
+            Toast.makeText(RegisterActivity.this, "Error, las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+
+        }
+
+
     }
 }

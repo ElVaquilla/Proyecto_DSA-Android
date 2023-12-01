@@ -10,43 +10,30 @@
         android:id="@+id/register"
         android:layout_width="233dp"
         android:layout_height="75dp"
-        android:text="Registrarse"
         android:onClick="regonClick"
+        android:text="Registrarse"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/tienda"
-        android:layout_width="237dp"
-        android:layout_height="78dp"
-        android:text="Tienda"
-        android:onClick="tiendaonClick"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/register"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.982" />
 
     <TextView
         android:id="@+id/titulo"
-        android:layout_width="196dp"
+        android:layout_width="249dp"
         android:layout_height="94dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginBottom="71dp"
         android:text="Operación Rempálago"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/tienda"
+        app:layout_constraintBottom_toTopOf="@+id/register"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.872" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/login"
@@ -60,6 +47,6 @@
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.768" />
+        app:layout_constraintVertical_bias="0.729" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
