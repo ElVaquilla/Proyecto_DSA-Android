@@ -2,6 +2,7 @@ package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.login.ModelosDeClases.Credenciales;
 import com.example.login.ModelosDeClases.CredencialesRegistro;
+import com.example.login.ModelosDeClases.CredencialesRespuesta;
 
 import java.util.List;
 
@@ -30,6 +32,8 @@ public class RegisterActivity extends AppCompatActivity {
     private Window window;
     private ProgressBar spinner;
     private Button registerButton;
+    public static String pswd;
+    public static String usrname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +48,9 @@ public class RegisterActivity extends AppCompatActivity {
         // Recogemos los datos introducidos por el usuario
         Log.i("OnClick", "Entra en el login");
         EditText editText = (EditText) findViewById(R.id.username);
-        String usrname = editText.getText().toString();
+        this.usrname = editText.getText().toString();
         EditText editText2 = (EditText) findViewById(R.id.password);
-        String pswd = editText2.getText().toString();
+        this.pswd = editText2.getText().toString();
         EditText editText3 = (EditText) findViewById(R.id.email);
         String mail = editText3.getText().toString();
         EditText editText4=(EditText)findViewById(R.id.confirmPassword);
@@ -56,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
         spinner=(ProgressBar)findViewById(R.id.progressBar);
 
         if(pswd.equals(confirmPswd)){
-            CredencialesRegistro c = new CredencialesRegistro(usrname, pswd,mail);
+            CredencialesRegistro c = new CredencialesRegistro(this.usrname, this.pswd,mail);
 
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -71,20 +75,21 @@ public class RegisterActivity extends AppCompatActivity {
 
             RegisterService register = retrofit.create(RegisterService.class);
 
-            Call<List<CredencialesRegistro>> call = register.CreateCredencialesRegistro(c);
+            Call<CredencialesRespuesta> call = register.CreateCredencialesRegistro(c);
             spinner.setVisibility(View.VISIBLE);
-            call.enqueue(new Callback<List<CredencialesRegistro>>() {
+            call.enqueue(new Callback<CredencialesRespuesta>() {
                 @Override
-                public void onResponse(Call<List<CredencialesRegistro>> call, Response<List<CredencialesRegistro>> response) {
+                public void onResponse(Call<CredencialesRespuesta> call, Response<CredencialesRespuesta> response) {
                     if (response.isSuccessful()) {
                         spinner.setVisibility(View.GONE);
+                        startActivity(new Intent(RegisterActivity.this, Tienda.class));
                         Toast.makeText(RegisterActivity.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
                     }
                     else
                         Toast.makeText(RegisterActivity.this,"Error, response is not as expected", Toast.LENGTH_SHORT).show();
                 }
                 @Override
-                public void onFailure(Call<List<CredencialesRegistro>> call, Throwable t) {
+                public void onFailure(Call<CredencialesRespuesta> call, Throwable t) {
                     Toast.makeText(RegisterActivity.this, "Error no response", Toast.LENGTH_SHORT).show();
                     spinner.setVisibility(View.GONE);
                 }

@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.login.ModelosDeClases.Credenciales;
+import com.example.login.ModelosDeClases.CredencialesRespuesta;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -23,6 +24,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoginActivity extends AppCompatActivity {
 
     private Window window;
+    public static String usrname;
+    public static String pswd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +34,17 @@ public class LoginActivity extends AppCompatActivity {
         this.window = getWindow();
     }
 
+    public static String getUsername(){return usrname;}
+
     public void loginonClick(View v) {
 
         // Recogemos los datos introducidos por el usuario
         Log.i("OnClick", "Entra en el login");
         EditText editText = (EditText) findViewById(R.id.username);
-        String usrname = editText.getText().toString();
+        this.usrname = editText.getText().toString();
         EditText editText2 = (EditText) findViewById(R.id.password);
-        String pswd = editText2.getText().toString();
-        Credenciales c = new Credenciales(usrname, pswd);
+        this.pswd = editText2.getText().toString();
+        Credenciales c = new Credenciales(this.usrname, this.pswd);
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -53,13 +58,14 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         LoginService login = retrofit.create(LoginService.class);
-        Call<String> call = login.Createcredenciales(c);
-        call.enqueue(new Callback<String>() {
+        Call<CredencialesRespuesta> call = login.Createcredenciales(c);
+        call.enqueue(new Callback<CredencialesRespuesta>() {
 
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<CredencialesRespuesta> call, Response<CredencialesRespuesta> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, Tienda.class));
                 }
                 else {
                     Toast.makeText(LoginActivity.this, "Error, response is not as expected", Toast.LENGTH_SHORT).show();
@@ -69,9 +75,8 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Error No response", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, Tienda.class));
+            public void onFailure(Call<CredencialesRespuesta> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Error no response", Toast.LENGTH_SHORT).show();
             }
         });
 
