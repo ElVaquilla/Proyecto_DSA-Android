@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.login.ModelosDeClases.Jugador;
 import com.example.login.ModelosDeClases.ProductoVo;
 
 import java.util.ArrayList;
@@ -68,10 +69,10 @@ public class ProductoTienda extends AppCompatActivity {
                 .client(httpClient.build())
                 .build();
         ComprarService producto = retrofit.create(ComprarService.class);
-        Call<String> call = producto.comprarProducto(nom.toString(),LoginActivity.getUsername());
-        call.enqueue(new Callback<String>() {
+        Call<Jugador> call = producto.comprarProducto(nom.getText().toString(),LoginActivity.getUsername());
+        call.enqueue(new Callback<Jugador>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<Jugador> call, Response<Jugador> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(ProductoTienda.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
                 }
@@ -81,7 +82,7 @@ public class ProductoTienda extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<Jugador> call, Throwable t) {
                 Toast.makeText(ProductoTienda.this, "Error No response", Toast.LENGTH_SHORT).show();
             }
         });
