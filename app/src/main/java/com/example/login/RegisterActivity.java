@@ -2,6 +2,7 @@ package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -82,8 +83,14 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onResponse(Call<CredencialesRespuesta> call, Response<CredencialesRespuesta> response) {
                     if (response.isSuccessful()) {
                         spinner.setVisibility(View.GONE);
-                        startActivity(new Intent(RegisterActivity.this, Tienda.class));
+                        Context context=RegisterActivity.this;
+                        SessionManager.registerUser(context, usrname);
+
                         Toast.makeText(RegisterActivity.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
+
+                        Intent intent=new Intent(context, MainMenu.class);
+                        startActivity(intent);
+                        finish();
                     }
                     else
                         Toast.makeText(RegisterActivity.this,"Error, response is not as expected", Toast.LENGTH_SHORT).show();

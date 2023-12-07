@@ -3,7 +3,6 @@ package com.example.login;
 import static android.app.PendingIntent.getActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,6 +16,7 @@ import android.widget.Toast;
 import com.example.login.ModelosDeClases.Credenciales;
 import com.example.login.ModelosDeClases.CredencialesRespuesta;
 import com.example.login.ModelosDeClases.Jugador;
+
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -45,9 +45,6 @@ public class LoginActivity extends AppCompatActivity {
     public void loginonClick(View v) {
         // Recogemos los datos introducidos por el usuario
         Log.i("OnClick", "Entra en el login");
-        Context context = getActivity();
-        SharedPreferences sharedPref = context.getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
         EditText editText = (EditText) findViewById(R.id.username);
         this.usrname = editText.getText().toString();
@@ -67,25 +64,31 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         LoginService login = retrofit.create(LoginService.class);
+
         Call<CredencialesRespuesta> call = login.Createcredenciales(c);
         call.enqueue(new Callback<CredencialesRespuesta>() {
 
             @Override
             public void onResponse(Call<CredencialesRespuesta> call, Response<CredencialesRespuesta> response) {
                 if (response.isSuccessful()) {
+                    Context context=LoginActivity.this;
+                    SessionManager.loginUser(context,usrname);
                     Toast.makeText(LoginActivity.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, Tienda.class));
+
+                    Intent intent=new Intent(context, MainMenu.class);
+                    startActivity(intent);
+                    finish();
                 }
                 else {
                     Toast.makeText(LoginActivity.this, "Error, response is not as expected", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
 
             @Override
             public void onFailure(Call<CredencialesRespuesta> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Error no response", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Error No response", Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
+
             }
         });
 
