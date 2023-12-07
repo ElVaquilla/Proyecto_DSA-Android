@@ -15,6 +15,16 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        boolean isLoggedIN=SessionManager.userLogged(this);
+        if(isLoggedIN){
+            Intent intent=new Intent(this, MainMenu.class);
+            startActivity(intent);
+            finish();
+        }
+        else{
+
+        }
     }
 
     public void logonClick(View v) {
@@ -23,8 +33,4 @@ public class MainActivity extends AppCompatActivity{
     public void regonClick(View v){
         startActivity(new Intent(MainActivity.this, RegisterActivity.class));
     }
-    /*public void tiendaonClick(View v){
-        Intent miii = new Intent(MainActivity.this, Tienda.class);
-        startActivity(miii);
-    }*/
 }

@@ -2,12 +2,17 @@ package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.login.ModelosDeClases.RespuestaLogin;
+import com.example.login.SessionManager;
 
 import com.example.login.ModelosDeClases.Credenciales;
 
@@ -52,21 +57,28 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         LoginService login = retrofit.create(LoginService.class);
-        Call<String> call = login.Createcredenciales(c);
-        call.enqueue(new Callback<String>() {
+        Call<RespuestaLogin> call = login.Createcredenciales(c);
+        call.enqueue(new Callback<RespuestaLogin>() {
 
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<RespuestaLogin> call, Response<RespuestaLogin> response) {
                 if (response.isSuccessful()) {
+                    Context context=LoginActivity.this;
+                    SessionManager.loginUser(context,usrname);
                     Toast.makeText(LoginActivity.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
+
+                    Intent intent=new Intent(context, MainMenu.class);
+                    startActivity(intent);
+                    finish();
                 }
                 else
                     Toast.makeText(LoginActivity.this, "Error, response is not as expected", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<RespuestaLogin> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Error No response", Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
 
