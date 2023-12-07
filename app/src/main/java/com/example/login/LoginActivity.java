@@ -1,7 +1,6 @@
 package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +10,8 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.login.ModelosDeClases.RespuestaLogin;
-import com.example.login.SessionManager;
-
 import com.example.login.ModelosDeClases.Credenciales;
-
+import com.example.login.ModelosDeClases.CredencialesRespuesta;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -27,6 +23,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoginActivity extends AppCompatActivity {
 
     private Window window;
+    public static String usrname;
+    public static String pswd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +33,17 @@ public class LoginActivity extends AppCompatActivity {
         this.window = getWindow();
     }
 
+    public static String getUsername(){return usrname;}
+
     public void loginonClick(View v) {
 
         // Recogemos los datos introducidos por el usuario
         Log.i("OnClick", "Entra en el login");
         EditText editText = (EditText) findViewById(R.id.username);
-        String usrname = editText.getText().toString();
+        this.usrname = editText.getText().toString();
         EditText editText2 = (EditText) findViewById(R.id.password);
-        String pswd = editText2.getText().toString();
-        Credenciales c = new Credenciales(usrname, pswd);
+        this.pswd = editText2.getText().toString();
+        Credenciales c = new Credenciales(this.usrname, this.pswd);
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -57,11 +57,12 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         LoginService login = retrofit.create(LoginService.class);
-        Call<RespuestaLogin> call = login.Createcredenciales(c);
-        call.enqueue(new Callback<RespuestaLogin>() {
+
+        Call<CredencialesRespuesta> call = login.Createcredenciales(c);
+        call.enqueue(new Callback<CredencialesRespuesta>() {
 
             @Override
-            public void onResponse(Call<RespuestaLogin> call, Response<RespuestaLogin> response) {
+            public void onResponse(Call<CredencialesRespuesta> call, Response<CredencialesRespuesta> response) {
                 if (response.isSuccessful()) {
                     Context context=LoginActivity.this;
                     SessionManager.loginUser(context,usrname);
@@ -71,14 +72,16 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-                else
+                else {
                     Toast.makeText(LoginActivity.this, "Error, response is not as expected", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
-            public void onFailure(Call<RespuestaLogin> call, Throwable t) {
+            public void onFailure(Call<CredencialesRespuesta> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Error No response", Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
+
             }
         });
 

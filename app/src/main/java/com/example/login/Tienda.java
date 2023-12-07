@@ -54,10 +54,6 @@ public class Tienda extends AppCompatActivity {
         listProductos.add(new ProductoVo("VIDA",8,"mkver",10,"jre",2));
         listProductos.add(new ProductoVo("VIDA",8,"mkver",10,"jre",2));
         listProductos.add(new ProductoVo("VIDA",8,"mkver",10,"jre",2));
-
-
-
-
     }
     public void manualClick(View v) {
         llenarProductManual();
@@ -104,7 +100,6 @@ public class Tienda extends AppCompatActivity {
                             startActivity(miIntentq);
                         }
                     });
-
                 }
             }
 

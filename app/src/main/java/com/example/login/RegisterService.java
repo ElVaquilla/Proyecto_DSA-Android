@@ -2,6 +2,7 @@ package com.example.login;
 
 import com.example.login.ModelosDeClases.Credenciales;
 import com.example.login.ModelosDeClases.CredencialesRegistro;
+import com.example.login.ModelosDeClases.CredencialesRespuesta;
 
 import java.util.List;
 
@@ -14,5 +15,5 @@ public interface RegisterService {
 
     @Headers("Content-Type:application/json")
     @POST("dsaApp/jugadores/register/")
-    Call<List<CredencialesRegistro>> CreateCredencialesRegistro(@Body CredencialesRegistro credenciales);
+    Call<CredencialesRespuesta> CreateCredencialesRegistro(@Body CredencialesRegistro credenciales);
 }
