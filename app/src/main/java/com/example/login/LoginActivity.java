@@ -1,8 +1,12 @@
 package com.example.login;
 
+import static android.app.PendingIntent.getActivity;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.login.ModelosDeClases.Credenciales;
 import com.example.login.ModelosDeClases.CredencialesRespuesta;
+import com.example.login.ModelosDeClases.Jugador;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -20,6 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Path;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,9 +43,12 @@ public class LoginActivity extends AppCompatActivity {
     public static String getUsername(){return usrname;}
 
     public void loginonClick(View v) {
-
         // Recogemos los datos introducidos por el usuario
         Log.i("OnClick", "Entra en el login");
+        Context context = getActivity();
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+
         EditText editText = (EditText) findViewById(R.id.username);
         this.usrname = editText.getText().toString();
         EditText editText2 = (EditText) findViewById(R.id.password);
