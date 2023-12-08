@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".SplashActivity"
+            android:name="com.example.proyecto.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,25 +26,25 @@
         </activity>
 
         <activity
-            android:name=".Profile"
+            android:name="com.example.proyecto.Profile"
             android:exported="false" />
         <activity
-            android:name=".MainMenu"
+            android:name="com.example.proyecto.MainMenu"
             android:exported="false" />
         <activity
-            android:name=".ProductoTienda"
+            android:name="com.example.proyecto.ProductoTienda"
             android:exported="false" />
         <activity
-            android:name=".Tienda"
+            android:name="com.example.proyecto.Tienda"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.example.proyecto.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.proyecto.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.proyecto.MainActivity"
             android:exported="false"/>
     </application>
 

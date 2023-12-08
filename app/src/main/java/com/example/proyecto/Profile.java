@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 
+import com.example.login.R;
+
 public class Profile extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent>galleryLauncher;

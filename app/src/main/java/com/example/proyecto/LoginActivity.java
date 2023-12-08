@@ -12,6 +12,7 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.login.R;
 import com.example.proyecto.ModelosDeClases.Credenciales;
 import com.example.proyecto.ModelosDeClases.CredencialesRespuesta;
 

@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.login.R;
 import com.example.proyecto.ModelosDeClases.CredencialesRegistro;
 import com.example.proyecto.ModelosDeClases.CredencialesRespuesta;
 

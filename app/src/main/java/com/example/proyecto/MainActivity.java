@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import android.view.View;
 
+import com.example.login.R;
+
 public class MainActivity extends AppCompatActivity{
 
 
