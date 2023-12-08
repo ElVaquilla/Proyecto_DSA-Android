@@ -1,4 +1,4 @@
-package com.example.proyecto;
+package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,9 +13,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.login.R;
-import com.example.proyecto.ModelosDeClases.CredencialesRegistro;
-import com.example.proyecto.ModelosDeClases.CredencialesRespuesta;
+
+import com.example.login.ModelosDeClases.CredencialesRegistro;
+import com.example.login.ModelosDeClases.CredencialesRespuesta;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

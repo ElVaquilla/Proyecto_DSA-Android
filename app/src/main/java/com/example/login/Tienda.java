@@ -1,4 +1,4 @@
-package com.example.proyecto;
+package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,8 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.login.R;
-import com.example.proyecto.ModelosDeClases.ProductoVo;
+import com.example.login.ModelosDeClases.ProductoVo;
 
 import java.util.ArrayList;
 import retrofit2.Call;

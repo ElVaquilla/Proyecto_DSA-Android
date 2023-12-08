@@ -1,4 +1,4 @@
-package com.example.proyecto;
+package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.login.R;
-import com.example.proyecto.ModelosDeClases.Jugador;
+import com.example.login.ModelosDeClases.Jugador;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

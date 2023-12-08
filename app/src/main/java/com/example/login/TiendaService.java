@@ -1,6 +1,6 @@
-package com.example.proyecto;
+package com.example.login;
 
-import com.example.proyecto.ModelosDeClases.ProductoVo;
+import com.example.login.ModelosDeClases.ProductoVo;
 
 import java.util.ArrayList;
 
