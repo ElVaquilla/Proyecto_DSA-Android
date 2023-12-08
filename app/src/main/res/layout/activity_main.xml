@@ -19,17 +19,12 @@
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
         app:layout_constraintVertical_bias="0.939" />
-=======
-        app:layout_constraintVertical_bias="1.0" />
->>>>>>> 42d659a474288a4964975ebf515420602789b252
 
     <TextView
         android:id="@+id/titulo"
         android:layout_width="249dp"
         android:layout_height="94dp"
-<<<<<<< HEAD
         android:layout_marginBottom="71dp"
         android:gravity="center"
         android:text="Operación Rempálago"
@@ -40,14 +35,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.815" />
-=======
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="56dp"
-        android:text="Operación Rempálago"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/register"
-        app:layout_constraintEnd_toEndOf="parent" />
->>>>>>> 42d659a474288a4964975ebf515420602789b252
 
     <Button
         android:id="@+id/login"
@@ -60,11 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
         app:layout_constraintVertical_bias="0.675" />
-=======
-        app:layout_constraintVertical_bias="0.608" />
 
->>>>>>> 42d659a474288a4964975ebf515420602789b252
 
 </androidx.constraintlayout.widget.ConstraintLayout>

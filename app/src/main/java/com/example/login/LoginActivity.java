@@ -73,20 +73,20 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Context context=LoginActivity.this;
                     SessionManager.loginUser(context,usrname);
-                    Toast.makeText(LoginActivity.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Bienvenido", Toast.LENGTH_SHORT).show();
 
                     Intent intent=new Intent(context, MainMenu.class);
                     startActivity(intent);
                     finish();
                 }
                 else {
-                    Toast.makeText(LoginActivity.this, "Error, response is not as expected", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Error, usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<CredencialesRespuesta> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Error No response", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Error no connection with server", Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
 
             }
