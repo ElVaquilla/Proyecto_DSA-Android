@@ -10,17 +10,17 @@
         android:id="@+id/changePassword"
         android:layout_width="178dp"
         android:layout_height="50dp"
-        android:text="Cambiar contraseña"
         android:onClick="onChangePassword"
+        android:text="Cambiar contraseña"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.471" />
+        app:layout_constraintVertical_bias="0.474" />
 
     <Button
-        android:id="@+id/changeUsername"
+        android:id="@+id/onChangeUser"
         android:layout_width="178dp"
         android:layout_height="50dp"
         android:text="Cambiar usuario"
@@ -36,15 +36,16 @@
         android:id="@+id/changeImage"
         android:layout_width="178dp"
         android:layout_height="50dp"
-        android:text="Cambiar imagen"
         android:layout_below="@id/imageButtonProfile"
         android:onClick="onChangeImageClick"
+        android:text="Cambiar imagen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54" />
+        app:layout_constraintVertical_bias="0.547" />
+
     <ImageButton
         android:id="@+id/imageButtonProfile"
         android:layout_width="150dp"
@@ -65,12 +66,25 @@
         android:id="@+id/button"
         android:layout_width="178dp"
         android:layout_height="50dp"
-        android:text="Cerrar sesión"
         android:onClick="onSignOff"
+        android:text="Cerrar sesión"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.613" />
+        app:layout_constraintVertical_bias="0.621" />
+
+    <Button
+        android:id="@+id/returnToMainMenu"
+        android:layout_width="178dp"
+        android:layout_height="50dp"
+        android:onClick="returnToMainMenu"
+        android:text="Volver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.694" />
 </androidx.constraintlayout.widget.ConstraintLayout>

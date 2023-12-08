@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageButton;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -33,9 +35,7 @@ public class MainMenu extends AppCompatActivity {
         finish();
     }
     public void onSettingsClick(View view){
-        Intent intent =new Intent(this, SettingsActivity.class);
-        startActivity(intent);
-        finish();
+
     }
     public void onLeaveClick(View view){
         finish();

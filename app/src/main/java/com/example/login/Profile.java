@@ -1,6 +1,8 @@
 package com.example.login;
 
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -25,7 +27,8 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        this.window=getWindow();
+
+
         imageProfileButton=findViewById(R.id.imageButtonProfile);
         sharedPreferences=getSharedPreferences("MyPrefs",MODE_PRIVATE);
 
@@ -43,6 +46,12 @@ public class Profile extends AppCompatActivity {
                 }
         );
     }
+    private  void startChangeActivity(String a){
+        Intent intent=new Intent(this,Change.class);
+        intent.putExtra("ACTION",a);
+        startActivity(intent);
+        finish();
+    }
     public void onChangeImageClick(View view){
         openGallery();
     }
@@ -52,15 +61,26 @@ public class Profile extends AppCompatActivity {
         editor.putString("profileImUri",newImageUri.toString());
         editor.apply();
     }
+    public void onChangeUser(View view){
+        startChangeActivity("changeUsername");
+    }
     private void openGallery(){
         Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         galleryLauncher.launch(galleryIntent);
     }
     public void onChangePassword(View view){
-
+        startChangeActivity("changePassword");
     }
     public void onSignOff(View view){
         SessionManager.logOutUser(this);
+        Intent intent=new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    public void returnToMainMenu(View view){
+        Intent intent=new Intent(this, MainMenu.class);
+        startActivity(intent);
+        finish();
     }
 
 }

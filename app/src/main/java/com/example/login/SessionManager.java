@@ -2,6 +2,8 @@ package com.example.login;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.widget.MultiAutoCompleteTextView;
 
 public class SessionManager {
 
