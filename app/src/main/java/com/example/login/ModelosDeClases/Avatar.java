@@ -1,4 +1,4 @@
-package com.example.proyecto.ModelosDeClases;
+package com.example.login.ModelosDeClases;
 
 public class Avatar {
     String nombre;

@@ -1,4 +1,4 @@
-package com.example.proyecto;
+package com.example.login;
 
 import static android.app.PendingIntent.getActivity;
 
@@ -12,8 +12,8 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.proyecto.ModelosDeClases.Credenciales;
-import com.example.proyecto.ModelosDeClases.CredencialesRespuesta;
+import com.example.login.ModelosDeClases.Credenciales;
+import com.example.login.ModelosDeClases.CredencialesRespuesta;
 
 
 import okhttp3.OkHttpClient;

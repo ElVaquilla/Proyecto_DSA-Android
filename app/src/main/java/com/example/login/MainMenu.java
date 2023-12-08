@@ -1,4 +1,4 @@
-package com.example.proyecto;
+package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,7 +33,9 @@ public class MainMenu extends AppCompatActivity {
         finish();
     }
     public void onSettingsClick(View view){
-
+        Intent intent =new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+        finish();
     }
     public void onLeaveClick(View view){
         finish();
