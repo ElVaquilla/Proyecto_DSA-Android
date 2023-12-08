@@ -1,10 +1,7 @@
-package com.example.login;
+package com.example.proyecto;
 
-import com.example.login.ModelosDeClases.Credenciales;
-import com.example.login.ModelosDeClases.CredencialesRegistro;
-import com.example.login.ModelosDeClases.CredencialesRespuesta;
-
-import java.util.List;
+import com.example.proyecto.ModelosDeClases.CredencialesRegistro;
+import com.example.proyecto.ModelosDeClases.CredencialesRespuesta;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

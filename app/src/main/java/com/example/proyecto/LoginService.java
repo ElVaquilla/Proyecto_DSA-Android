@@ -1,8 +1,8 @@
-package com.example.login;
+package com.example.proyecto;
 
-import com.example.login.ModelosDeClases.Credenciales;
+import com.example.proyecto.ModelosDeClases.Credenciales;
 
-import com.example.login.ModelosDeClases.CredencialesRespuesta;
+import com.example.proyecto.ModelosDeClases.CredencialesRespuesta;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Headers;

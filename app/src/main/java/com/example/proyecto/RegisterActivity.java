@@ -1,4 +1,4 @@
-package com.example.login;
+package com.example.proyecto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,14 +11,10 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.login.ModelosDeClases.Credenciales;
-import com.example.login.ModelosDeClases.CredencialesRegistro;
-import com.example.login.ModelosDeClases.CredencialesRespuesta;
-
-import java.util.List;
+import com.example.proyecto.ModelosDeClases.CredencialesRegistro;
+import com.example.proyecto.ModelosDeClases.CredencialesRespuesta;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

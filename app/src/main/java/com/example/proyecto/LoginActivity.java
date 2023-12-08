@@ -1,11 +1,10 @@
-package com.example.login;
+package com.example.proyecto;
 
 import static android.app.PendingIntent.getActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,9 +12,8 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.login.ModelosDeClases.Credenciales;
-import com.example.login.ModelosDeClases.CredencialesRespuesta;
-import com.example.login.ModelosDeClases.Jugador;
+import com.example.proyecto.ModelosDeClases.Credenciales;
+import com.example.proyecto.ModelosDeClases.CredencialesRespuesta;
 
 
 import okhttp3.OkHttpClient;
@@ -25,7 +23,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Path;
 
 public class LoginActivity extends AppCompatActivity {
 

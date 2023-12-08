@@ -1,4 +1,4 @@
-package com.example.login;
+package com.example.proyecto;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.login.ModelosDeClases.ProductoVo;
+import com.example.proyecto.ModelosDeClases.ProductoVo;
 
 import java.util.ArrayList;
 

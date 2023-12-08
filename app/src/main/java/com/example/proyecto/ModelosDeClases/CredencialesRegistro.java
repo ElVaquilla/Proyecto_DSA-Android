@@ -1,4 +1,4 @@
-package com.example.login.ModelosDeClases;
+package com.example.proyecto.ModelosDeClases;
 
 public class CredencialesRegistro {
     private String username;

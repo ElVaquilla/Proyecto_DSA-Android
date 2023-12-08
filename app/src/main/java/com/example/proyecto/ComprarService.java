@@ -1,13 +1,8 @@
-package com.example.login;
+package com.example.proyecto;
 
-import com.example.login.ModelosDeClases.Credenciales;
-import com.example.login.ModelosDeClases.Jugador;
-import com.example.login.ModelosDeClases.ProductoVo;
-
-import java.util.ArrayList;
+import com.example.proyecto.ModelosDeClases.Jugador;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 

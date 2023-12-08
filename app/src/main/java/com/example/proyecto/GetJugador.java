@@ -1,6 +1,6 @@
-package com.example.login;
+package com.example.proyecto;
 
-import com.example.login.ModelosDeClases.Jugador;
+import com.example.proyecto.ModelosDeClases.Jugador;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
