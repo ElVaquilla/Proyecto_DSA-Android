@@ -28,22 +28,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.proyecto.Profile"
+            android:name=".Profile"
             android:exported="false" />
         <activity
-            android:name="com.example.proyecto.MainMenu"
+            android:name=".MainMenu"
             android:exported="false" />
         <activity
-            android:name="com.example.proyecto.ProductoTienda"
+            android:name=".ProductoTienda"
             android:exported="false" />
         <activity
-            android:name="com.example.proyecto.Tienda"
+            android:name=".Tienda"
             android:exported="false" />
         <activity
-            android:name="com.example.proyecto.RegisterActivity"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.proyecto.LoginActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
