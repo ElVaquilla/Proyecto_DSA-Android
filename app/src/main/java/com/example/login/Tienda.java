@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -38,31 +39,6 @@ public class Tienda extends AppCompatActivity {
         recyclerProd.setLayoutManager(new LinearLayoutManager(this));
 
 
-    }
-    public void menuClick(){
-        startActivity(new Intent(Tienda.this, MainActivity.class));
-    }
-    //public void logonClick(View v) {
-      //  startActivity(new Intent(MainActivity.this, LoginActivity.class));
-    //}
-    private void llenarProductManual(){
-        listProductos.add(new ProductoVo("VIDA",8,"mkver",10,"jre",2));
-        listProductos.add(new ProductoVo("VIDA",8,"mkver",10,"jre",2));
-        listProductos.add(new ProductoVo("VIDA",8,"mkver",10,"jre",2));
-        listProductos.add(new ProductoVo("VIDA",8,"mkver",10,"jre",2));
-        listProductos.add(new ProductoVo("VIDA",8,"mkver",10,"jre",2));
-        listProductos.add(new ProductoVo("VIDA",8,"mkver",10,"jre",2));
-        listProductos.add(new ProductoVo("VIDA",8,"mkver",10,"jre",2));
-        listProductos.add(new ProductoVo("VIDA",8,"mkver",10,"jre",2));
-    }
-    public void manualClick(View v) {
-        llenarProductManual();
-        AdapterDatos adapter=new AdapterDatos(listProductos,this);
-
-        recyclerProd.setAdapter(adapter);
-    }
-    public void getClick(View v){
-
         HttpLoggingInterceptor loggin = new HttpLoggingInterceptor();
         loggin.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -86,14 +62,15 @@ public class Tienda extends AppCompatActivity {
                     adapter.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
                             Bundle miBundle=new Bundle();
+
                             miBundle.putString("id",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getId());
                             miBundle.putInt("precio",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getPrecio());
                             miBundle.putString("nombre",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getNombre());
                             miBundle.putInt("efect",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getEfect());
                             miBundle.putString("descrip",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getDescrip());
-                            miBundle.putInt("efectType",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getEfectType());
+                            Log.v("jdks","sodf " + listProductos.get(recyclerProd.getChildAdapterPosition(view)).getEfect());
+                            //miBundle.putInt("efectType",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getEfectType());
                             Intent miIntentq = new Intent(Tienda.this, ProductoTienda.class);
                             miIntentq.putExtras(miBundle);
 
@@ -112,6 +89,7 @@ public class Tienda extends AppCompatActivity {
 
 
     }
-
-
+    public void menuClick(){
+        startActivity(new Intent(this, MainActivity.class));
+    }
 }
