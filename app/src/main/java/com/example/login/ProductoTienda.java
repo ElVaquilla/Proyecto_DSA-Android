@@ -8,6 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.login.ModelosDeClases.Jugador;
+import com.example.login.ModelosDeClases.ProductoVo;
+
+import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -71,10 +74,10 @@ public class ProductoTienda extends AppCompatActivity {
             @Override
             public void onResponse(Call<Jugador> call, Response<Jugador> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(ProductoTienda.this, "Comprado correctamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProductoTienda.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(ProductoTienda.this, "No tienes suficientes eurillos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProductoTienda.this, "Error, response is not as expected", Toast.LENGTH_SHORT).show();
                 }
             }
 
