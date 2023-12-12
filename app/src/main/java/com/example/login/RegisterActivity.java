@@ -31,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegisterActivity extends AppCompatActivity {
 
     private Window window;
-    private ProgressBar spinner;
+
     private Button registerButton;
     public static String pswd;
     public static String usrname;
@@ -45,7 +45,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void registeronClick(View v) {
 
-
         // Recogemos los datos introducidos por el usuario
         Log.i("OnClick", "Entra en el login");
         EditText editText = (EditText) findViewById(R.id.username);
@@ -58,7 +57,6 @@ public class RegisterActivity extends AppCompatActivity {
         String confirmPswd=editText4.getText().toString();
 
         registerButton=(Button)findViewById(R.id.reg);
-        spinner=(ProgressBar)findViewById(R.id.progressBar);
 
         if(pswd.equals(confirmPswd)){
             CredencialesRegistro c = new CredencialesRegistro(this.usrname, this.pswd,mail);
@@ -77,12 +75,11 @@ public class RegisterActivity extends AppCompatActivity {
             RegisterService register = retrofit.create(RegisterService.class);
 
             Call<CredencialesRespuesta> call = register.CreateCredencialesRegistro(c);
-            spinner.setVisibility(View.VISIBLE);
+
             call.enqueue(new Callback<CredencialesRespuesta>() {
                 @Override
                 public void onResponse(Call<CredencialesRespuesta> call, Response<CredencialesRespuesta> response) {
                     if (response.isSuccessful()) {
-                        spinner.setVisibility(View.GONE);
                         Context context=RegisterActivity.this;
                         SessionManager.registerUser(context, usrname);
 
@@ -98,13 +95,12 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<CredencialesRespuesta> call, Throwable t) {
                     Toast.makeText(RegisterActivity.this, "Error no response", Toast.LENGTH_SHORT).show();
-                    spinner.setVisibility(View.GONE);
+
                 }
             });
             registerButton.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    spinner.setVisibility(View.VISIBLE);
                 }
             }));
         }else{
@@ -112,12 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
             editText2.setText("");
             editText3.setText("");
             editText4.setText("");
-            registerButton.setOnClickListener((new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    spinner.setVisibility(View.VISIBLE);
-                }
-            }));
+
             Toast.makeText(RegisterActivity.this, "Error, las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
 
         }

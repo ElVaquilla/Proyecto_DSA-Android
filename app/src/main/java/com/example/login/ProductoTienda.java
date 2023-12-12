@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,8 @@ public class ProductoTienda extends AppCompatActivity {
     TextView precio;
     TextView descrip ;
     TextView estado ;
+    private ProgressBar spinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,9 @@ public class ProductoTienda extends AppCompatActivity {
 
     }
     public void comprarClick(View view){
+
+        spinner=(ProgressBar)findViewById(R.id.progressBar);
+
         HttpLoggingInterceptor loggin = new HttpLoggingInterceptor();
         loggin.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -70,20 +76,27 @@ public class ProductoTienda extends AppCompatActivity {
                 .build();
         ComprarService producto = retrofit.create(ComprarService.class);
         Call<Jugador> call = producto.comprarProducto(nom.getText().toString(),LoginActivity.getUsername());
+
+        spinner.setVisibility(View.VISIBLE);
+
         call.enqueue(new Callback<Jugador>() {
             @Override
             public void onResponse(Call<Jugador> call, Response<Jugador> response) {
                 if (response.isSuccessful()) {
+                    spinner.setVisibility(View.GONE);
                     Toast.makeText(ProductoTienda.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Toast.makeText(ProductoTienda.this, "Error, response is not as expected", Toast.LENGTH_SHORT).show();
+                    spinner.setVisibility(View.GONE);
                 }
             }
 
             @Override
             public void onFailure(Call<Jugador> call, Throwable t) {
                 Toast.makeText(ProductoTienda.this, "Error No response", Toast.LENGTH_SHORT).show();
+                spinner.setVisibility(View.GONE);
+
             }
         });
     }
