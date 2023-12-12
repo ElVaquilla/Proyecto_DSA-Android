@@ -39,7 +39,4 @@ public class MainMenu extends AppCompatActivity {
     public void onSettingsClick(View view){
 
     }
-    public void onLeaveClick(View view){
-        finish();
-    }
 }
