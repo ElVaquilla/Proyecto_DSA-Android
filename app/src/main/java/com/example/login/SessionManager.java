@@ -37,4 +37,9 @@ public class SessionManager {
         editor.remove(KEY_LAST_LOGIN_TIME);
         editor.apply();
     }
+
+    public static String getLoggedUsername(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        return preferences.getString(KEY_USERNAME, null);
+    }
 }

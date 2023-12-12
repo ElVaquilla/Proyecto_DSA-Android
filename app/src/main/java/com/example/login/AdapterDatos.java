@@ -71,6 +71,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
 
             etiNiv=(TextView)itemView.findViewById(R.id.niv_product);
             etiD=(TextView)itemView.findViewById(R.id.p_product);
+
             //foto=(ImageView) itemView.findViewById(R.id.idImagen);
 
         }

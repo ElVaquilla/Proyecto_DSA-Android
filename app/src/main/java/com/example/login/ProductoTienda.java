@@ -2,6 +2,7 @@ package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -75,8 +76,9 @@ public class ProductoTienda extends AppCompatActivity {
                 .client(httpClient.build())
                 .build();
         ComprarService producto = retrofit.create(ComprarService.class);
-        Call<Jugador> call = producto.comprarProducto(nom.getText().toString(),LoginActivity.getUsername());
 
+        String username = SessionManager.getLoggedUsername(this);
+        Call<Jugador> call = producto.comprarProducto(nom.getText().toString(), username);
         spinner.setVisibility(View.VISIBLE);
 
         call.enqueue(new Callback<Jugador>() {
@@ -85,6 +87,7 @@ public class ProductoTienda extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     spinner.setVisibility(View.GONE);
                     Toast.makeText(ProductoTienda.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
                 else {
                     Toast.makeText(ProductoTienda.this, "Error, response is not as expected", Toast.LENGTH_SHORT).show();
