@@ -9,8 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.login.ModelosDeClases.CredencialesRespuesta;
+import com.example.login.ModelosDeClases.Jugador;
 import com.example.login.ModelosDeClases.ProductoVo;
 
 import java.util.ArrayList;
@@ -87,9 +90,29 @@ public class Tienda extends AppCompatActivity {
             }
         });
 
+        String username = SessionManager.getLoggedUsername(this);
+        GetJugador jugador = retrofit.create(GetJugador.class);
+        Call<Jugador> call2 = jugador.getJugador(username);
+        call2.enqueue(new Callback<Jugador>() {
+            @Override
+            public void onResponse(Call<Jugador> call, Response<Jugador> response) {
+                if (response.isSuccessful()) {
+                    Jugador jugador = response.body();
+                    int eurillos = jugador.getEurillos();
+                    TextView textView3 = findViewById(R.id.textView3);
+                    textView3.setText(String.valueOf(eurillos));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Jugador> call, Throwable t) {
+                Toast.makeText(Tienda.this, "error", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
-    public void menuClick(){
+
+    public void menuClick(View view){
         startActivity(new Intent(this, MainActivity.class));
     }
 }

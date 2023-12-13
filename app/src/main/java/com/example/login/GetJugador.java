@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface GetJugador {
-    @GET("dsaApp/jugador/{nombre}")
+    @GET("dsaApp/jugadores/{nombre}")
     Call<Jugador> getJugador(@Path("nombre") String nombre);
 }
