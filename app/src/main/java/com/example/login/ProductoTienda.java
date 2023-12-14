@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -54,17 +55,9 @@ public class ProductoTienda extends AppCompatActivity {
             Integer stat = miBundle.getInt("efect");
             estado.setText("Estado: "+stat);
 
-            String des = miBundle.getString("decrip");
+            String des = miBundle.getString("descrip");
             descrip.setText(des);
         }
-    }
-    public void salirClick(View view){
-        finish();
-
-    }
-    public void comprarClick(View view){
-
-        spinner=(ProgressBar)findViewById(R.id.progressBar);
 
         HttpLoggingInterceptor loggin = new HttpLoggingInterceptor();
         loggin.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -75,32 +68,85 @@ public class ProductoTienda extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
-        ComprarService producto = retrofit.create(ComprarService.class);
 
         String username = SessionManager.getLoggedUsername(this);
-        Call<Jugador> call = producto.comprarProducto(nom.getText().toString(), username);
-        spinner.setVisibility(View.VISIBLE);
 
-        call.enqueue(new Callback<Jugador>() {
+        GetJugador jugador = retrofit.create(GetJugador.class);
+        Call<Jugador> call2 = jugador.getJugador(username);
+        call2.enqueue(new Callback<Jugador>() {
             @Override
             public void onResponse(Call<Jugador> call, Response<Jugador> response) {
                 if (response.isSuccessful()) {
-                    spinner.setVisibility(View.GONE);
-                    Toast.makeText(ProductoTienda.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-                else {
-                    Toast.makeText(ProductoTienda.this, "Error, response is not as expected", Toast.LENGTH_SHORT).show();
-                    spinner.setVisibility(View.GONE);
+                    Jugador jugador = response.body();
+                    int eurillos = jugador.getEurillos();
+                    TextView coin = findViewById(R.id.textView4);
+                    coin.setText(String.valueOf(eurillos));
                 }
             }
 
             @Override
             public void onFailure(Call<Jugador> call, Throwable t) {
-                Toast.makeText(ProductoTienda.this, "Error No response", Toast.LENGTH_SHORT).show();
-                spinner.setVisibility(View.GONE);
-
+                Toast.makeText(ProductoTienda.this, "error", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void salirClick(View view){
+        finish();
+
+    }
+    public void comprarClick(View view){
+
+        TextView coin = findViewById(R.id.textView4);
+        String coinText = coin.getText().toString();
+        String precioTexto = precio.getText().toString();
+        String precioNumerico = precioTexto.replaceAll("[^0-9]", "");
+        if (Integer.parseInt(coinText) >= Integer.parseInt(precioNumerico)) {
+
+            spinner = (ProgressBar) findViewById(R.id.progressBar2);
+
+            HttpLoggingInterceptor loggin = new HttpLoggingInterceptor();
+            loggin.setLevel(HttpLoggingInterceptor.Level.BODY);
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+            httpClient.addInterceptor(loggin);
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://10.0.2.2:8080/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(httpClient.build())
+                    .build();
+            ComprarService producto = retrofit.create(ComprarService.class);
+
+            String username = SessionManager.getLoggedUsername(this);
+
+            Call<Jugador> call = producto.comprarProducto(nom.getText().toString(), username);
+            spinner.setVisibility(View.VISIBLE);
+            call.enqueue(new Callback<Jugador>() {
+                @Override
+                public void onResponse(Call<Jugador> call, Response<Jugador> response) {
+                    if (response.isSuccessful()) {
+                        spinner.setVisibility(View.GONE);
+                        Toast.makeText(ProductoTienda.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ProductoTienda.this, Tienda.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(ProductoTienda.this, "Error, response is not as expected", Toast.LENGTH_SHORT).show();
+                        spinner.setVisibility(View.GONE);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Jugador> call, Throwable t) {
+                    Log.e("Retrofit", "Error: " + t.getMessage()); // Log the error message
+                    Toast.makeText(ProductoTienda.this, "Error No response", Toast.LENGTH_SHORT).show();
+                    spinner.setVisibility(View.GONE);
+
+                }
+            });
+        } else{
+            Toast.makeText(ProductoTienda.this, "Error, Estás tieso hermano", Toast.LENGTH_SHORT).show();
+        }
+
+
+
     }
 }
