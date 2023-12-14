@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/iniciarJuego"
-        android:layout_width="146dp"
-        android:layout_height="52dp"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
         android:text="Start game"
         android:onClick="onStartGameClick"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,8 +21,8 @@
 
     <Button
         android:id="@+id/tienda"
-        android:layout_width="145dp"
-        android:layout_height="51dp"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
         android:text="Tienda"
         android:onClick="onShopClick"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,8 +34,8 @@
 
     <Button
         android:id="@+id/ajustes"
-        android:layout_width="145dp"
-        android:layout_height="51dp"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
         android:text="Ajustes"
         android:onClick="onSettingsClick"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/default_profile_image"
+        android:background="@drawable/profileimuri"
         android:contentDescription="Profile image"
         android:onClick="onProfileImageClick"
         app:layout_constraintBottom_toBottomOf="parent"
