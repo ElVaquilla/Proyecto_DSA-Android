@@ -51,7 +51,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/default_profile_image"
+        android:background="@drawable/profileimuri"
         android:contentDescription="Profile image"
         android:onClick="onChangeImageClick"
         app:layout_constraintBottom_toBottomOf="parent"

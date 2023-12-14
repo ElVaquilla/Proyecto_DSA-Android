@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity{
         if(isLoggedIN){
             Intent intent=new Intent(this, MainMenu.class);
             startActivity(intent);
-            //finish();
         }
         else{
 

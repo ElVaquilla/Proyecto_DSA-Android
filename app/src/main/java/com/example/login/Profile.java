@@ -34,7 +34,7 @@ public class Profile extends AppCompatActivity {
         imageProfileButton=findViewById(R.id.imageButtonProfile);
         sharedPreferences=getSharedPreferences("MyPrefs",MODE_PRIVATE);
 
-        String savedImageUri=sharedPreferences.getString("profileImUri",null);
+        String savedImageUri=sharedPreferences.getString("profileimuri",null);
         if(savedImageUri!=null){
             imageProfileButton.setImageURI(Uri.parse(savedImageUri));
         }
@@ -60,7 +60,7 @@ public class Profile extends AppCompatActivity {
     private void updateProfileImage(Uri newImageUri){
         imageProfileButton.setImageURI(newImageUri);
         SharedPreferences.Editor editor=sharedPreferences.edit();
-        editor.putString("profileImUri",newImageUri.toString());
+        editor.putString("profileimuri",newImageUri.toString());
         editor.apply();
     }
     public void onChangeUser(View view){
