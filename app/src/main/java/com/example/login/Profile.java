@@ -48,12 +48,6 @@ public class Profile extends AppCompatActivity {
                 }
         );
     }
-    private  void startChangeActivity(String a){
-        Intent intent=new Intent(this,Change.class);
-        intent.putExtra("ACTION",a);
-        startActivity(intent);
-        finish();
-    }
     public void onChangeImageClick(View view){
         openGallery();
     }
@@ -64,14 +58,20 @@ public class Profile extends AppCompatActivity {
         editor.apply();
     }
     public void onChangeUser(View view){
-        startChangeActivity("changeUsername");
+        String a ="changeUsername";
+        Intent intent=new Intent(this,Change.class);
+        intent.putExtra("ACTION",a);
+        startActivity(intent);
     }
     private void openGallery(){
         Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         galleryLauncher.launch(galleryIntent);
     }
     public void onChangePassword(View view){
-        startChangeActivity("changePassword");
+        String a = "changePassword";
+        Intent intent=new Intent(this,Change.class);
+        intent.putExtra("ACTION",a);
+        startActivity(intent);
     }
     public void onSignOff(View view){
         SessionManager.logOutUser(this);
