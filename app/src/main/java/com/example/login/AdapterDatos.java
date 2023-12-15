@@ -4,12 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.login.ModelosDeClases.ProductoVo;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -43,7 +45,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
         holder.etiNiv.setText(listaProductos.get(position).getPrecio().toString());
         //holder.etiP.setText(listaProductos.get(position).getPrecio().toString());
 
-        //holder.foto.setImageResource(listaProductos.get(position).getFoto());
+        Picasso.get().load(listaProductos.get(position).getImagen()).resize(250, 250).into(holder.foto);
 
     }
 
@@ -64,7 +66,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
         TextView etiN, etiNiv, etiD;
-        //ImageView foto;
+        ImageView foto;
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
             etiN=(TextView) itemView.findViewById(R.id.n_product);
@@ -72,7 +74,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
             etiNiv=(TextView)itemView.findViewById(R.id.niv_product);
             etiD=(TextView)itemView.findViewById(R.id.p_product);
 
-            //foto=(ImageView) itemView.findViewById(R.id.idImagen);
+            foto=(ImageView) itemView.findViewById(R.id.idImagen);
 
         }
 

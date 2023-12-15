@@ -2,16 +2,19 @@ package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.login.ModelosDeClases.Jugador;
 import com.example.login.ModelosDeClases.ProductoVo;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -25,6 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProductoTienda extends AppCompatActivity {
     TextView id;
+    ImageView imagen;
     TextView nom;
     TextView precio;
     TextView descrip ;
@@ -32,6 +36,7 @@ public class ProductoTienda extends AppCompatActivity {
     private ProgressBar spinner;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +46,7 @@ public class ProductoTienda extends AppCompatActivity {
         precio= (TextView) findViewById(R.id.precio);
         descrip = (TextView) findViewById(R.id.descrip);
         estado = (TextView) findViewById(R.id.efectType);
+        imagen = (ImageView) findViewById(R.id.imageView2);
         Bundle miBundle = this.getIntent().getExtras();
         if(miBundle!=null){
             Integer idd = miBundle.getInt("id");
@@ -57,6 +63,11 @@ public class ProductoTienda extends AppCompatActivity {
 
             String des = miBundle.getString("descrip");
             descrip.setText(des);
+            String im = miBundle.getString("imagen");
+            //imagen.setImageResource(Integer.parseInt(im));
+            Picasso.get().load(im).into(imagen);
+
+
         }
 
         HttpLoggingInterceptor loggin = new HttpLoggingInterceptor();

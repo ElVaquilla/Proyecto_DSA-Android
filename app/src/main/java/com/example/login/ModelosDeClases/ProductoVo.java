@@ -1,7 +1,7 @@
 package com.example.login.ModelosDeClases;
 
 public class ProductoVo {
-    //private int foto;
+    private String imagen;
     private String id;
     private Integer precio;
     private String nombre;
@@ -12,8 +12,8 @@ public class ProductoVo {
     public ProductoVo(){
 
     }
-    public ProductoVo( String id, Integer precio,String nombre, Integer efect, String descrip, Integer type) {
-        //this.foto = foto;
+    public ProductoVo( String imagen,String id, Integer precio,String nombre, Integer efect, String descrip, Integer type) {
+        this.imagen = imagen;
         this.id = id;
         this.precio = precio;
         this.nombre = nombre;
@@ -23,13 +23,13 @@ public class ProductoVo {
         //this.precio = precio;
     }
 
-    //public int getFoto() {
-    //    return foto;
-    //}
+    public String getImagen() {
+        return imagen;
+    }
 
-    //public void setFoto(int foto) {
-    //    this.foto = foto;
-    //}
+    public void setImagen(String foto) {
+        this.imagen = foto;
+    }
     public String getId() {
         return id;
     }

@@ -66,7 +66,7 @@ public class Tienda extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             Bundle miBundle=new Bundle();
-
+                            miBundle.putString("imagen",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getImagen());
                             miBundle.putString("id",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getId());
                             miBundle.putInt("precio",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getPrecio());
                             miBundle.putString("nombre",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getNombre());
