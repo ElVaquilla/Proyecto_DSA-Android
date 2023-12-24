@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.login.R;
 
@@ -30,6 +31,12 @@ public class MainMenu extends AppCompatActivity {
     }
     public void onStartGameClick(View view){
 
+        Intent launchIntent=getPackageManager().getLaunchIntentForPackage("com.DefaultCompany.ProyectoDSAUnity");
+        if(launchIntent!=null){
+            startActivity(launchIntent);
+        }else{
+            Toast.makeText(MainMenu.this,"error",Toast.LENGTH_SHORT).show();
+        }
     }
     public void onShopClick(View view){
         Intent intent =new Intent(this, Tienda.class);
