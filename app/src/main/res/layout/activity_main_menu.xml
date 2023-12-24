@@ -58,4 +58,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.083"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/botonMensajes"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:onClick="onClickMensajesSistema"
+        android:text="Mensajes del sistema"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.59" />
 </androidx.constraintlayout.widget.ConstraintLayout>

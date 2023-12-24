@@ -39,4 +39,8 @@ public class MainMenu extends AppCompatActivity {
     public void onSettingsClick(View view){
 
     }
+    public void onClickMensajesSistema(View view){
+        Intent intent =new Intent(this, MensajesSistema.class);
+        startActivity(intent);
+    }
 }
