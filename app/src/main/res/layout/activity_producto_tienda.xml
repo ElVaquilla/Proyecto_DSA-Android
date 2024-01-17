@@ -64,12 +64,12 @@
         app:layout_constraintTop_toBottomOf="@+id/nombre"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <ImageButton
         android:id="@+id/comprar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:background="@drawable/comprar"
         android:onClick="comprarClick"
-        android:text="COMPRAR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,15 +88,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/efectType"
         app:layout_constraintVertical_bias="0.17000002" />
-
-    <Button
-        android:id="@+id/salir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="salirClick"
-        android:text="VOLVER A LA TIENDA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
@@ -130,6 +121,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.01"
         app:srcCompat="@drawable/coin" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/atras"
+        android:onClick="salirClick"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

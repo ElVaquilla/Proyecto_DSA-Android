@@ -6,19 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
-    <Button
+    <ImageButton
         android:id="@+id/reg"
-        android:layout_width="228dp"
-        android:layout_height="64dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:background="@drawable/registrarse"
         android:onClick="registeronClick"
-        android:text="Register"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.746" />
+        app:layout_constraintVertical_bias="0.8" />
 
     <TextView
         android:id="@+id/titulo"
@@ -51,7 +51,7 @@
         android:layout_width="233dp"
         android:layout_height="55dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Contraseña"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/reg"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,7 @@
         android:layout_width="235dp"
         android:layout_height="54dp"
         android:ems="10"
-        android:hint="Confirm password"
+        android:hint="Confirmar contraseña"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +79,7 @@
         android:layout_width="234dp"
         android:layout_height="55dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Usuario"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"

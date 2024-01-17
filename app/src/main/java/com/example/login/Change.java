@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.example.login.ModelosDeClases.ChangeService;
 import com.example.login.ModelosDeClases.CredencialesChangePassword;
 import com.example.login.ModelosDeClases.CredencialesChangeUsername;
 import com.example.login.ModelosDeClases.CredencialesRespuesta;
+import com.google.gson.Gson;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -34,7 +36,7 @@ public class Change extends AppCompatActivity {
     EditText usernameEditNewUsername;
     EditText usernameEditPassword;
     EditText confirmPasswordChangePwd;
-    Button enviarCambioBtn;
+    ImageButton enviarCambioBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +51,7 @@ public class Change extends AppCompatActivity {
         usernameEditUsername=findViewById(R.id.usernameChangeUsername);
         usernameEditNewUsername=findViewById(R.id.newUsernameChangeUsername);
         usernameEditPassword=findViewById(R.id.passwordChangeUsername);
-        enviarCambioBtn=(Button)findViewById(R.id.enviarCambio);
+        enviarCambioBtn=(ImageButton)findViewById(R.id.enviarCambio);
 
         Intent intent=getIntent();
 
@@ -58,12 +60,12 @@ public class Change extends AppCompatActivity {
 
             if("changePassword".equals(action)){
 
-                textView2.setText("Change password");
+                textView2.setText("Cambiar contraseña");
                 setupChangePasswordUI();
 
             }else {
 
-                textView2.setText("Change username");
+                textView2.setText("Cambiar usuario");
                 setupChangeUsernameUI();
 
             }
@@ -139,7 +141,7 @@ public class Change extends AppCompatActivity {
         String newUsername=usernameEditNewUsername.getText().toString();
         String password=usernameEditPassword.getText().toString();
 
-        CredencialesChangeUsername ca = new CredencialesChangeUsername(username, newUsername,password);
+        CredencialesChangeUsername ca = new CredencialesChangeUsername(username, newUsername, password);
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -158,12 +160,19 @@ public class Change extends AppCompatActivity {
         call.enqueue(new Callback<CredencialesRespuesta>() {
             @Override
             public void onResponse(Call<CredencialesRespuesta> call, Response<CredencialesRespuesta> response) {
-                Context context=Change.this;
-                Toast.makeText(Change.this, "Submitted Successfully", Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful()) {
+                    // Manejar respuesta exitosa
+                    Context context = Change.this;
+                    Toast.makeText(context, "Submitted Successfully", Toast.LENGTH_SHORT).show();
+                    SessionManager.loginUser(context, newUsername);
 
-                Intent intent=new Intent(context,Profile.class);
-                startActivity(intent);
-                finish();
+                    Intent intent = new Intent(context, Profile.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+
+                    Toast.makeText(Change.this, "Error", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

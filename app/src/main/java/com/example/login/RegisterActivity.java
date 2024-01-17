@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -30,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private Window window;
 
-    private Button registerButton;
+    private ImageButton registerButton;
     public static String pswd;
     public static String usrname;
 
@@ -56,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
         String confirmPswd = editText4.getText().toString();
 
 
-        registerButton=(Button)findViewById(R.id.reg);
+        registerButton=(ImageButton)findViewById(R.id.reg);
 
         if (pswd.equals(confirmPswd)) {
             CredencialesRegistro c = new CredencialesRegistro(usrname, pswd, mail);

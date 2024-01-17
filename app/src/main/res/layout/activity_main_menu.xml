@@ -6,42 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainMenu">
 
-    <Button
+    <ImageButton
         android:id="@+id/iniciarJuego"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:text="Start game"
+        android:layout_width="320dp"
+        android:layout_height="120dp"
+        android:background="@drawable/start"
         android:onClick="onStartGameClick"
+        android:textSize="27dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.318" />
-
-    <Button
-        android:id="@+id/tienda"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:text="Tienda"
-        android:onClick="onShopClick"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408" />
-
-    <Button
-        android:id="@+id/ajustes"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:text="Ajustes"
-        android:onClick="onSettingsClick"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.805" />
 
     <ImageButton
         android:id="@+id/profileButton"
@@ -53,22 +30,120 @@
         android:onClick="onProfileImageClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.814"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.083"
+        app:layout_constraintVertical_bias="0.02"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <Button
-        android:id="@+id/botonMensajes"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:onClick="onClickMensajesSistema"
-        android:text="Mensajes del sistema"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="20dp"
+        android:layout_height="19dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profileButton"
+        app:layout_constraintEnd_toStartOf="@+id/profileButton"
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profileButton"
+        app:layout_constraintVertical_bias="0.16000003"
+        app:srcCompat="@drawable/coin" />
+
+    <TextView
+        android:id="@+id/dineros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:textColor="#FFC107"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+    <ImageButton
+        android:id="@+id/tiendaboton"
+        android:layout_width="70dp"
+        android:layout_height="67dp"
+        android:background="@drawable/tienda"
+        android:contentDescription="Tienda"
+        android:onClick="onShopClick"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintEnd_toStartOf="@+id/mensajesboton"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.59" />
+        app:layout_constraintVertical_bias="0.97"
+        tools:srcCompat="@drawable/tienda" />
+
+    <ImageButton
+        android:id="@+id/ajustesboton"
+        android:layout_width="70dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ajustes"
+        android:contentDescription="Ajustes"
+        android:onClick="onSettingsClick"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/preguntasboton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/preguntasboton"
+        app:layout_constraintTop_toTopOf="@+id/preguntasboton"
+        tools:srcCompat="@drawable/ajustes" />
+
+    <ImageButton
+        android:id="@+id/mensajesboton"
+        android:layout_width="70dp"
+        android:layout_height="0dp"
+        android:background="@drawable/mensajes"
+        android:contentDescription="Mensajes"
+        android:onClick="onClickMensajesSistema"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/tiendaboton"
+        app:layout_constraintEnd_toStartOf="@+id/preguntasboton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tiendaboton"
+        app:layout_constraintTop_toTopOf="@+id/tiendaboton"
+        tools:srcCompat="@drawable/mensajes" />
+
+    <ImageButton
+        android:id="@+id/preguntasboton"
+        android:layout_width="70dp"
+        android:layout_height="0dp"
+        android:background="@drawable/pregunta"
+        android:contentDescription="Preguntas"
+        android:onClick="onQuestionClick"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/mensajesboton"
+        app:layout_constraintEnd_toStartOf="@+id/ajustesboton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/mensajesboton"
+        app:layout_constraintTop_toTopOf="@+id/mensajesboton"
+        tools:srcCompat="@drawable/pregunta" />
+
+    <ImageButton
+        android:id="@+id/avatar"
+        android:layout_width="216dp"
+        android:layout_height="341dp"
+        android:contentDescription="Avatar image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.31"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/change"
+        android:layout_width="50dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="308dp"
+        android:background="@drawable/cambiar"
+        android:contentDescription="Cambiar avatar"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/avatar"
+        app:layout_constraintTop_toTopOf="@+id/avatar"
+        tools:srcCompat="@drawable/cambiar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

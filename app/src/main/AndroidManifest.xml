@@ -55,6 +55,9 @@
         <activity
             android:name=".Change"
             android:exported="false" />
+        <activity
+            android:name=".AddQuestion"
+            android:exported="false" />
     </application>
 
 </manifest>
