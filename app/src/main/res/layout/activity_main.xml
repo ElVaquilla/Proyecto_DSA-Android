@@ -40,7 +40,7 @@
         android:id="@+id/login"
         android:layout_width="320dp"
         android:layout_height="120dp"
-        android:background="@drawable/login"
+        android:background="@drawable/iniciar"
         android:onClick="logonClick"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

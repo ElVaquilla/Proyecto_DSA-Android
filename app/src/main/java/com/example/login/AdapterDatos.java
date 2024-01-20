@@ -23,13 +23,8 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
     public AdapterDatos(ArrayList<ProductoVo> listaProductos, Context context){
         this.listaProductos=listaProductos;
         this.context = context;
-        //listaProductos=new ArrayList<>();
     }
-    /*public void setListaProductos(ArrayList<ProductoVo> listaProducts)
-    {
-        listaProductos = listaProducts;
-        notifyDataSetChanged();
-    }*/
+
     @NonNull
     @Override
     public ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,12 +36,8 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
         holder.etiN.setText(listaProductos.get(position).getNombre().toString());
-        holder.etiD.setText(listaProductos.get(position).getEfect().toString());
-        holder.etiNiv.setText(listaProductos.get(position).getPrecio().toString());
-        //holder.etiP.setText(listaProductos.get(position).getPrecio().toString());
-
+        holder.etiP.setText(listaProductos.get(position).getPrecio().toString());
         Picasso.get().load(listaProductos.get(position).getImagen()).resize(250, 250).into(holder.foto);
-
     }
 
     @Override
@@ -65,15 +56,12 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
     }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
-        TextView etiN, etiNiv, etiD;
+        TextView etiN, etiP;
         ImageView foto;
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
             etiN=(TextView) itemView.findViewById(R.id.n_product);
-
-            etiNiv=(TextView)itemView.findViewById(R.id.niv_product);
-            etiD=(TextView)itemView.findViewById(R.id.p_product);
-
+            etiP=(TextView)itemView.findViewById(R.id.p_product);
             foto=(ImageView) itemView.findViewById(R.id.idImagen);
 
         }

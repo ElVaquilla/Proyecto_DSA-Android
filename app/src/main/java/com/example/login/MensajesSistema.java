@@ -61,12 +61,6 @@ public class MensajesSistema extends AppCompatActivity {
                     adaptador=new MensajesAdapter(listaMensajes,MensajesSistema.this);
                     recyclerMensaje.setAdapter(adaptador);
 
-                   /* StringBuilder mensajesStringBuilder=new StringBuilder();
-                    for(Mensaje mensaje:listaMensajes){
-                        mensajesStringBuilder.append(mensaje.getMensaje()).append("\n");
-                    }
-                    mensajes.setText(mensajesStringBuilder.toString());*/
-
                 }
             }
             @Override

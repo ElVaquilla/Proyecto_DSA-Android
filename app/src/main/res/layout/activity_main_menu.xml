@@ -141,6 +141,7 @@
         android:layout_marginTop="308dp"
         android:background="@drawable/cambiar"
         android:contentDescription="Cambiar avatar"
+        android:onClick="onClickChange"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="@+id/avatar"
         app:layout_constraintTop_toTopOf="@+id/avatar"

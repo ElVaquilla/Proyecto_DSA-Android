@@ -119,6 +119,7 @@ public class Profile extends AppCompatActivity {
         });
 
     }
+
     public void onChangeImageClick(View view){
         openGallery();
     }

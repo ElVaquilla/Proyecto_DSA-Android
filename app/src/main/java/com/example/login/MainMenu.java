@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -30,6 +31,10 @@ public class MainMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        int dif = SessionManager.getKeyDif(MainMenu.this);
+        Log.d("DEBUG_TAG", "Dificultad seleccionada: " + dif);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         this.window = getWindow();
@@ -66,6 +71,12 @@ public class MainMenu extends AppCompatActivity {
         });
     }
 
+    public void onClickChange(View view){
+        Intent intent =new Intent(this, ChangeAvatar.class);
+        startActivity(intent);
+        finish();
+    }
+
     public void onProfileImageClick(View view){
         Intent intent =new Intent(this, Profile.class);
         startActivity(intent);
@@ -86,7 +97,8 @@ public class MainMenu extends AppCompatActivity {
         finish();
     }
     public void onSettingsClick(View view){
-
+        Intent intent =new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
     public void onClickMensajesSistema(View view){
         Intent intent =new Intent(this, MensajesSistema.class);

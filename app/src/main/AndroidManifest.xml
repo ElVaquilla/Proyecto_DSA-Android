@@ -58,6 +58,13 @@
         <activity
             android:name=".AddQuestion"
             android:exported="false" />
+        <activity
+            android:name=".ChangeAvatar"
+            android:exported="false" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

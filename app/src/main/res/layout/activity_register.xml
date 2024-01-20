@@ -24,6 +24,8 @@
         android:id="@+id/titulo"
         android:layout_width="196dp"
         android:layout_height="94dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
         android:text="Operación Rempálago"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/email"

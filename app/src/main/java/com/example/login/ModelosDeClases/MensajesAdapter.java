@@ -28,7 +28,7 @@ public class MensajesAdapter extends RecyclerView.Adapter<MensajesAdapter.Mensaj
     @NonNull
     @Override
     public MensajesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_mensajes_sistema, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_mensajes, parent,false);
         return new MensajesViewHolder(view);
     }
 
@@ -48,7 +48,7 @@ public class MensajesAdapter extends RecyclerView.Adapter<MensajesAdapter.Mensaj
         TextView textViewMensaje;
         public MensajesViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewMensaje=(TextView) itemView.findViewById(R.id.textView5);
+            textViewMensaje=(TextView) itemView.findViewById(R.id.textView15);
         }
     }
 }

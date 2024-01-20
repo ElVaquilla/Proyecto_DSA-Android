@@ -9,7 +9,15 @@ public class SessionManager {
 
     private static final String PREF_NAME="SessionPREFS";
     private static final String KEY_USERNAME="username";
+    private static final String KEY_DIF = "dificultad";
     private static final String KEY_LAST_LOGIN_TIME="lastLogin";
+
+    public  static void dif(Context context, int dificultad){
+        SharedPreferences.Editor editor=context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit();
+        editor.putInt(KEY_DIF,dificultad);
+        editor.putLong(KEY_LAST_LOGIN_TIME,System.currentTimeMillis());
+        editor.apply();
+    }
 
     public static void loginUser(Context context, String username){
         SharedPreferences.Editor editor=context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit();
@@ -35,11 +43,17 @@ public class SessionManager {
         SharedPreferences.Editor editor=context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE).edit();
         editor.remove(KEY_USERNAME);
         editor.remove(KEY_LAST_LOGIN_TIME);
+        editor.remove(KEY_DIF);
         editor.apply();
     }
 
     public static String getLoggedUsername(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         return preferences.getString(KEY_USERNAME, null);
+    }
+
+    public static int getKeyDif(Context context){
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        return preferences.getInt(KEY_DIF, 0);
     }
 }

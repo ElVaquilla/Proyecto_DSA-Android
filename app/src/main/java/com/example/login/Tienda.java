@@ -67,13 +67,11 @@ public class Tienda extends AppCompatActivity {
                         public void onClick(View view) {
                             Bundle miBundle=new Bundle();
                             miBundle.putString("imagen",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getImagen());
-                            miBundle.putString("id",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getId());
                             miBundle.putInt("precio",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getPrecio());
                             miBundle.putString("nombre",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getNombre());
                             miBundle.putInt("efect",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getEfect());
-                            miBundle.putString("descrip",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getDescrip());
-                            Log.v("jdks","sodf " + listProductos.get(recyclerProd.getChildAdapterPosition(view)).getEfect());
-                            //miBundle.putInt("efectType",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getEfectType());
+                            miBundle.putString("description",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getDescription());
+                            miBundle.putInt("efectType",listProductos.get(recyclerProd.getChildAdapterPosition(view)).getType());
                             Intent miIntentq = new Intent(Tienda.this, ProductoTienda.class);
                             miIntentq.putExtras(miBundle);
 

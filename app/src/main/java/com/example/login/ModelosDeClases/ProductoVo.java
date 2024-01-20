@@ -6,19 +6,18 @@ public class ProductoVo {
     private Integer precio;
     private String nombre;
     private Integer efect;
-    private String descrip;
+    private String description;
     private Integer type;
-    //private Integer precio;
     public ProductoVo(){
 
     }
-    public ProductoVo( String imagen,String id, Integer precio,String nombre, Integer efect, String descrip, Integer type) {
+    public ProductoVo( String imagen,String id, Integer precio,String nombre, Integer efect, String description, Integer type) {
         this.imagen = imagen;
         this.id = id;
         this.precio = precio;
         this.nombre = nombre;
         this.efect = efect;
-        this.descrip = descrip;
+        this.description = description;
         this.type = type;
         //this.precio = precio;
     }
@@ -58,12 +57,12 @@ public class ProductoVo {
     public void setEfect(Integer efect) {
         this.efect = efect;
     }
-    public String getDescrip() {
-        return descrip;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescrip(String descrip) {
-        this.descrip = descrip;
+    public void setDescription(String descrip) {
+        this.description = descrip;
     }
 
     public Integer getType() {
