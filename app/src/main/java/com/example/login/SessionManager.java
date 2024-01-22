@@ -12,9 +12,18 @@ public class SessionManager {
     private static final String KEY_DIF = "dificultad";
     private static final String KEY_LAST_LOGIN_TIME="lastLogin";
 
+    private static final String KEY_MUSIC = "musica";
+
     public  static void dif(Context context, int dificultad){
         SharedPreferences.Editor editor=context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit();
         editor.putInt(KEY_DIF,dificultad);
+        editor.putLong(KEY_LAST_LOGIN_TIME,System.currentTimeMillis());
+        editor.apply();
+    }
+
+    public static void sonido(Context context, Boolean musica){
+        SharedPreferences.Editor editor=context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit();
+        editor.putBoolean(KEY_MUSIC,musica);
         editor.putLong(KEY_LAST_LOGIN_TIME,System.currentTimeMillis());
         editor.apply();
     }
@@ -44,6 +53,7 @@ public class SessionManager {
         editor.remove(KEY_USERNAME);
         editor.remove(KEY_LAST_LOGIN_TIME);
         editor.remove(KEY_DIF);
+        editor.remove(KEY_MUSIC);
         editor.apply();
     }
 
@@ -55,5 +65,10 @@ public class SessionManager {
     public static int getKeyDif(Context context){
         SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         return preferences.getInt(KEY_DIF, 0);
+    }
+
+    public static Boolean getKeyMusic(Context context){
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        return preferences.getBoolean(KEY_MUSIC,true);
     }
 }

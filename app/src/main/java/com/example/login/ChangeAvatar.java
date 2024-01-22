@@ -91,14 +91,25 @@ public class ChangeAvatar extends AppCompatActivity {
 
     public void setAvatar(){
         Avatar a = listaAvatares.get(i);
-        avatarNombre.setText(a.getNombre());
+        String avatar = a.getNombre();
+        avatarNombre.setText(avatar);
+
+        ImageView image = findViewById(R.id.avatarImage);
+        if (avatar.equals("Mario")){
+            image.setBackground(getDrawable(R.drawable.mario));
+        } else if (avatar.equals("Tom")){
+            image.setBackground(getDrawable(R.drawable.tom));
+        } else if (avatar.equals("Paco")){
+            image.setBackground(getDrawable(R.drawable.paco));
+        }
+
         vida.setProgress(a.getHealth());
         daño.setProgress(a.getDamg());
         speed.setProgress(a.getSpeed());
     }
 
     public void onClickNext(View view){
-        if (i == 3){
+        if (i == 2){
             i = 0;
         }
         else{

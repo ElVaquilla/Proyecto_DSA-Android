@@ -35,7 +35,16 @@ public class AdapterHistorial extends RecyclerView.Adapter<AdapterHistorial.View
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
         holder.fecha.setText(listaPartidas.get(position).getFecha().toString());
         holder.puntos.setText(String.valueOf(listaPartidas.get(position).getPuntos()));
-        holder.dificultad.setText(String.valueOf(listaPartidas.get(position).getDif()));
+        int dif = listaPartidas.get(position).getDif();
+        String dificultad = null;
+        if (dif == 0){
+            dificultad = "Fácil";
+        } else if (dif == 1){
+            dificultad = "Medio";
+        } else if (dif == 2){
+            dificultad = "Difícil";
+        }
+        holder.dificultad.setText(dificultad);
     }
 
 

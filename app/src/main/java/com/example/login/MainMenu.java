@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,9 +32,6 @@ public class MainMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        int dif = SessionManager.getKeyDif(MainMenu.this);
-        Log.d("DEBUG_TAG", "Dificultad seleccionada: " + dif);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
@@ -61,6 +59,16 @@ public class MainMenu extends AppCompatActivity {
                     int eurillos = jugador.getEurillos();
                     TextView coin = findViewById(R.id.dineros);
                     coin.setText(String.valueOf(eurillos));
+                    String avatar = jugador.getAvatar();
+
+                    ImageView image = findViewById(R.id.avatar);
+                    if (avatar.equals("Mario")){
+                        image.setBackground(getDrawable(R.drawable.mario));
+                    } else if (avatar.equals("Tom")){
+                        image.setBackground(getDrawable(R.drawable.tom));
+                    } else if (avatar.equals("Paco")){
+                        image.setBackground(getDrawable(R.drawable.paco));
+                    }
                 }
             }
 

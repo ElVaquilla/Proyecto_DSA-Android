@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
     tools:context=".LoginActivity">
 
     <ImageButton
@@ -20,26 +21,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.739" />
 
-    <TextView
-        android:id="@+id/titulo"
-        android:layout_width="196dp"
-        android:layout_height="94dp"
-        android:text="Operación Rempálago"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
-
     <EditText
         android:id="@+id/password"
         android:layout_width="233dp"
         android:layout_height="55dp"
+        android:background="#FAF6F6"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPassword"
+        android:textColorHint="#756F6F"
         app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,14 +40,26 @@
         android:id="@+id/username"
         android:layout_width="234dp"
         android:layout_height="55dp"
+        android:background="#FAF6F6"
         android:ems="10"
         android:hint="Usuario"
         android:inputType="text"
+        android:textColorHint="#756F6F"
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="316dp"
+        android:layout_height="260dp"
+        app:layout_constraintBottom_toTopOf="@+id/username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/titulo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

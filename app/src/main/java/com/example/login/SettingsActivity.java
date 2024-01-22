@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -47,6 +49,23 @@ public class SettingsActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
 
+        });
+
+        Switch switchWidget = findViewById(R.id.swOnOff);
+
+
+        switchWidget.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    System.out.println("Switch activado");
+                } else {
+                    // El switch está desactivado
+                    System.out.println("Switch desactivado");
+                }
+                Context context = SettingsActivity.this;
+                SessionManager.sonido(context, isChecked);
+            }
         });
 
     }
